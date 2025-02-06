@@ -8,14 +8,14 @@ A simple Neovim plugin to upload files, yanks, and selections to
 - Uploading current opened file:
 ![demo-file](doc/demo_file.gif)
 
-- Uploding visual selection:
-![demo-file](doc/demo_visual_selection.gif)
+- Uploading visual selection:
+![demo-visual](doc/demo_visual_selection.gif)
 
 - Uploading last yanked/deleted text:
-![demo-file](doc/demo_yank.gif)
+![demo-yank](doc/demo_yank.gif)
 
-- Uploading a file selected in oil.nvim:
-![demo-file](doc/demo_oil.gif)
+- Uploading a file selected in `oil.nvim`:
+![demo-oil](doc/demo_oil.gif)
 
 ## Installation
 
@@ -42,7 +42,7 @@ By default, the following keymaps are available:
 - `<leader>0f` - Upload the current file
 - `<leader>0s` - Upload the current visual selection
 - `<leader>0y` - Upload the last yank or delete content 
-- `<leader>0o` - Upload a file selected in oil.nvim
+- `<leader>0o` - Upload a file selected in `oil.nvim`
 
 If `use_default_keymaps = false`, you can define your own mappings, like:
 
@@ -70,10 +70,4 @@ Contributions are welcome! Please follow these steps:
 
 This project is licensed under the GPL-2.0. See the [LICENSE](LICENSE) file for
 details.
-
-
-
-
-
-
 
