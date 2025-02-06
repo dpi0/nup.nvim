@@ -6,16 +6,16 @@ A simple Neovim plugin to upload files, yanks, and selections to
 ## Obligatory Demos
 
 - Uploading current opened file:
-![demo-file](doc/demo_file.webm)
+![demo-file](doc/demo_file.gif)
 
 - Uploding visual selection:
-![demo-file](doc/demo_visual_selection.webm)
+![demo-file](doc/demo_visual_selection.gif)
 
 - Uploading last yanked/deleted text:
-![demo-file](doc/demo_yank.webm)
+![demo-file](doc/demo_yank.gif)
 
 - Uploading a file selected in oil.nvim:
-![demo-file](doc/demo_oil.webm)
+![demo-file](doc/demo_oil.gif)
 
 ## Installation
 
