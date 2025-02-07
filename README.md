@@ -17,6 +17,9 @@ A simple Neovim plugin to upload files, yanks, and selections to
 - Uploading a file selected in `oil.nvim`:
 ![demo-oil](doc/demo_oil.gif)
 
+- Uploading an image selected in `oil.nvim`:
+![demo-oil](doc/demo_oil_image.gif)
+
 ## Installation
 
 ### Using lazy.nvim
