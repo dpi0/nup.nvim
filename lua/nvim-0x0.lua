@@ -20,7 +20,7 @@ M.upload_files = function(file_paths)
 		if url then
 			print(MSG_PREFIX .. "Uploaded to " .. url)
 			vim.fn.setreg("+", url)
-			print(MSG_PREFIX .. "URL copied to clipboard2")
+			print(MSG_PREFIX .. "URL copied to clipboard")
 		else
 			print(MSG_PREFIX .. "Failed to extract the URL from the response.")
 		end
