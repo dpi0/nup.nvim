@@ -31,7 +31,7 @@ require('lazy').setup({
   {
     "LionyxML/nvim-0x0",
     opts = {
-      -- base_url = "https://<your-0x0-instance>,/", -- only needed if you host your own 0x0 instance
+      -- base_url = "https://<your-0x0-instance>/",  -- only needed if you host your own 0x0 instance
       use_default_keymaps = true,                    -- Set to false if you want to define your own keymaps
     }
   }
