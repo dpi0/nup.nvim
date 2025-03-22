@@ -1,6 +1,13 @@
-# nup
+# nup.nvim
 
 A simple Neovim plugin to upload files, yanks, and selections to any hosted service for [WantGuns/bin](https://basedbin.fly.dev/).
+
+Fork of [LionyxML/nvim-0x0](https://github.com/LionyxML/nvim-0x0).
+
+Changes made:
+
+- Change `base_url` and curl upload method for any instance of [WantGuns/bin](https://basedbin.fly.dev/), default is <https://basedbin.fly.dev/>.
+- Add ability to append the current file's extension to the visual selection URL.
 
 ## Demos still apply
 
@@ -28,7 +35,7 @@ Add the following to your `lazy.nvim` configuration:
 ```lua
 require('lazy').setup({
   {
-    "dpi0/nup",
+    "dpi0/nup.nvim",
     opts = {
       -- base_url = "https://<your-bin-instance>/",  -- only needed if you host your own bin instance
       use_default_keymaps = true,                    -- Set to false if you want to define your own keymaps
