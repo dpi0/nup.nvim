@@ -1,6 +1,8 @@
 local M = {}
-local BASE_URL = "https://0x0.st/"
 local MSG_PREFIX = "nvim-0x0:: "
+
+-- Default base URL, can be overridden in setup
+M.BASE_URL = "https://basedbin.fly.dev"
 
 -- Function to upload files from a list of paths
 M.upload_files = function(file_paths)
@@ -9,22 +11,38 @@ M.upload_files = function(file_paths)
     return
   end
 
+  if not M.BASE_URL then
+    print(MSG_PREFIX .. "Base URL is not set! Use setup() to configure it.")
+    return
+  end
+
   for _, file in ipairs(file_paths) do
-    local cmd = "curl -F 'file=@" .. file .. "' " .. BASE_URL
+    local filename = vim.fn.fnamemodify(file, ":t")
+    local extension = filename:match("%.([^%.]+)$") or ""
+    local cmd = "curl -fsSL --data-binary @" .. file .. " --url " .. M.BASE_URL
 
-    print(MSG_PREFIX .. "Uploading to " .. BASE_URL)
+    print(MSG_PREFIX .. "Uploading to " .. M.BASE_URL)
+    local response = vim.fn.system(cmd):gsub("\n", "")
+    local paste_link = M.BASE_URL .. response
 
-    local output = vim.fn.system(cmd)
+    if extension ~= "" then
+      paste_link = paste_link .. "." .. extension
+    end
 
-    local url = output:match("[%w%.%-]+://[%w%.%-]+/[%w%-%./]+")
-    if url then
-      print(MSG_PREFIX .. "Uploaded to " .. url)
-      vim.fn.setreg("+", url)
+    if paste_link then
+      print(MSG_PREFIX .. "Uploaded to " .. paste_link)
+      vim.fn.setreg("+", paste_link)
       print(MSG_PREFIX .. "URL copied to clipboard")
     else
       print(MSG_PREFIX .. "Failed to extract the URL from the response.")
     end
   end
+end
+
+-- Provide a function to change the base URL
+M.set_base_url = function(url)
+  M.BASE_URL = url
+  print(MSG_PREFIX .. "Base URL set to: " .. M.BASE_URL)
 end
 
 -- Upload the current visual selection
@@ -134,18 +152,14 @@ M.upload_oil_file = function()
   M.upload_files({ file_path })
 end
 
--- Provide a function to change the base URL
-M.set_base_url = function(url)
-  BASE_URL = url
-  print(MSG_PREFIX .. "Base URL set to: " .. BASE_URL)
-end
-
 -- Provide a function to setup the plugin
 M.setup = function(opts)
   opts = opts or {}
 
-  if opts and opts.base_url then
+  if opts.base_url then
     M.set_base_url(opts.base_url)
+  else
+    print(MSG_PREFIX .. "Warning: No base URL provided in setup!")
   end
 
   local use_default_keymaps = opts.use_default_keymaps == nil or opts.use_default_keymaps
