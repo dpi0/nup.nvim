@@ -1,5 +1,5 @@
 local M = {}
-local MSG_PREFIX = "nvim-0x0:: "
+local MSG_PREFIX = "nup:: "
 
 -- Default base URL, can be overridden in setup
 M.BASE_URL = "https://basedbin.fly.dev"
@@ -168,25 +168,25 @@ M.setup = function(opts)
     vim.api.nvim_set_keymap(
       "n",
       "<leader>0f",
-      ':lua require("nvim-0x0").upload_current_file()<CR>',
+      ':lua require("nup").upload_current_file()<CR>',
       { noremap = true, silent = true, desc = "Upload the current file" }
     )
     vim.api.nvim_set_keymap(
       "v",
       "<leader>0s",
-      ':lua require("nvim-0x0").upload_selection()<CR>',
+      ':lua require("nup").upload_selection()<CR>',
       { noremap = true, silent = true, desc = "Upload the visual selection" }
     )
     vim.api.nvim_set_keymap(
       "n",
       "<leader>0y",
-      ':lua require("nvim-0x0").upload_yank()<CR>',
+      ':lua require("nup").upload_yank()<CR>',
       { noremap = true, silent = true, desc = "Upload the last yank content" }
     )
     vim.api.nvim_set_keymap(
       "n",
       "<leader>0o",
-      ':lua require("nvim-0x0").upload_oil_file()<CR>',
+      ':lua require("nup").upload_oil_file()<CR>',
       { noremap = true, silent = true, desc = "Upload a file from oil.nvim" }
     )
   end
