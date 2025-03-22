@@ -56,6 +56,10 @@ M.upload_selection = function()
     return
   end
 
+  -- Get the current file extension
+  local current_file = vim.fn.expand("%:p")
+  local extension = vim.fn.fnamemodify(current_file, ":e")
+
   local temp_file = os.tmpname()
   local f, err = io.open(temp_file, "w")
   if not f then
@@ -73,6 +77,15 @@ M.upload_selection = function()
   if not f:close() then
     print(MSG_PREFIX .. "Failed to close the file.")
     return
+  end
+
+  -- Store the original temp file name to ensure we clean it up later
+  local temp_file_path = temp_file
+
+  -- If we have an extension from the current file, create a new temp file with that extension
+  if extension ~= "" then
+    temp_file = temp_file .. "." .. extension
+    os.rename(temp_file_path, temp_file)
   end
 
   M.upload_files({ temp_file })
